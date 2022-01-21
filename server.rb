@@ -3,6 +3,8 @@ require 'sinatra/base'
 # require 'sinatra/reloader' if development?
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
+require 'logger'
+
 DEFAULT_GAME = {
   secret_1: nil,
   secret_2: nil,
@@ -10,10 +12,18 @@ DEFAULT_GAME = {
 }
 
 class App < Sinatra::Application
+  configure :production, :development do
+    enable :logging
+
+    logger = Logger.new(STDOUT)
+    logger.level = Logger::DEBUG if development?
+    set :logger, logger
+  end
+
   configure :development do
     register Sinatra::Reloader
     after_reload do
-      puts 'Reloaded!!!'
+      logger.info 'Reloaded!!!'
     end
   end
 
