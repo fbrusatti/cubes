@@ -13,7 +13,7 @@ class App < Sinatra::Application
   configure :development do
     register Sinatra::Reloader
     after_reload do
-      puts 'Reloaded...'
+      puts 'Reloaded!!!'
     end
   end
 
@@ -23,7 +23,7 @@ class App < Sinatra::Application
   end
 
   get '/' do
-    "Current games #{@games}"
+    "Current games: #{@games}"
   end
 
   post '/games/new' do
