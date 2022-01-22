@@ -14,9 +14,6 @@ DEFAULT_GAME = {
   turn: 1
 }
 
-class User < ActiveRecord::Base
-  validates_presence_of :name
-end
 
 class App < Sinatra::Application
   register Sinatra::ActiveRecordExtension
@@ -61,4 +58,6 @@ class App < Sinatra::Application
 
   end
 end
+
+require_relative 'models/init'
 
