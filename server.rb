@@ -1,6 +1,5 @@
 require 'bundler/setup'
 require 'sinatra/base'
-# require 'sinatra/reloader' if development?
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 require "sinatra/activerecord"
 require 'logger'
@@ -24,6 +23,7 @@ class App < Sinatra::Application
     logger = Logger.new(STDOUT)
     logger.level = Logger::DEBUG if development?
     set :logger, logger
+    set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
   end
 
   configure :development do
@@ -55,9 +55,9 @@ class App < Sinatra::Application
   end
 
   patch '/games/:id' do
-
   end
 end
 
 require_relative 'models/init'
+require_relative 'endpoints/init'
 

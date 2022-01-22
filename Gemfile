@@ -2,7 +2,6 @@ ruby '2.7.5'
 
 source 'https://rubygems.org'
 
-
 github 'sinatra/sinatra' do
   gem 'sinatra'
   gem 'sinatra-contrib'
@@ -12,6 +11,7 @@ gem 'sinatra-activerecord'
 gem 'sqlite3'
 gem 'rake'
 gem 'bcrypt'
+gem 'jwt'
 
 gem 'multi_json'
 
