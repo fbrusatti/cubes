@@ -15,3 +15,9 @@ gem 'jwt'
 
 gem 'multi_json'
 
+group :test do
+  gem 'rack-test'
+  gem 'rspec'
+  gem 'database_cleaner-active_record'
+end
+

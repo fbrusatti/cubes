@@ -3,6 +3,8 @@ require 'bcrypt'
 class User < ActiveRecord::Base
   include BCrypt
 
+  validates :name, uniqueness: true, presence: true
+
   def password
     @password ||= Password.new(password_digest)
   end
